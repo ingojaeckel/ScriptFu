@@ -1,0 +1,19 @@
+#!/bin/bash
+
+if [ -n $1 ];
+then
+	if [[ $1  == *:* ]];
+	then
+		file=$(echo $1 | cut -d ":" -f1);
+		line=$(echo $1 | cut -d ":" -f2);
+
+		echo $file
+		echo $line
+		/usr/bin/vim +$line $file
+	else
+		/usr/bin/vim $*;
+	fi
+else
+	/usr/bin/vim $*;
+fi;
+
